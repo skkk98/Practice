@@ -1,0 +1,21 @@
+{% extends 'music/base.html' %}
+
+{% block body %}
+<img src="{{ album.album_logo }}">
+
+<h1>{{ album.album_title }}</h1>
+<h3>{{ album.artist }}</h3>
+{% if album.song_set.all %}
+
+    {% for song in album.song_set.all %} <!--looping through every song(1st song selected and below code is run) then 2nd one-->
+            {{ song.song_title }}
+            {% if song.is_favourite %}
+                <img src="http://i.imgur.com/b9b13Rd.png"/>
+            {% endif %}
+        <br>
+    {% endfor %}
+
+{% else %}
+    <h3>OOPS! No Songs</h3>
+{% endif %}
+{% endblock %}
